@@ -6,10 +6,10 @@ import robin_stocks
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#LoggingIn into Robinhood
+#LoggingIn into Robinhood and Enter Authentication number
 robin_stocks.login("YourUserID","YourPassword")
 
-#StockList
+#Accessing the Purchased Stock Data
 my_stocks = robin_stocks.build_holdings()
 
 #Converting into Dataframe for better Visualization
