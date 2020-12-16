@@ -18,6 +18,6 @@ Steps:
 
 * The main task of this project is to transfer Robinhood 'purchased stock data' to Excel file to further analysis.
 
-* This help in generating more valuable information such as Profit, Loss, overall revanues.
+* This help in generating more valuable information from portfolio such as profit, loss, moving average of overall and individual stokes.
 
 * My main interest is to automate the data importing to excel sheet and generate Graph/Plot of Daily profil/loss based on the dynamic movement of market when it is closed(8PM EST-After Hour Trading).
