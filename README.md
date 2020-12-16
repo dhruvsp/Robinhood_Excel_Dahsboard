@@ -4,7 +4,7 @@
 
 Python version - 3.7.2
 
-Project Detail:
+###  Project Detail:
 
 here is Python file: [Robinhood_Excel_Dataframe.py](https://github.com/dhruvsp/Robinhood_Excel_Dahsboard/blob/main/Robinhood_Excel_Dataframe.py). 
 
