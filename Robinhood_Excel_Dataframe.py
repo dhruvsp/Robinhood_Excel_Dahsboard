@@ -1,4 +1,4 @@
-# Install robinhood
+# Install robinhood API Library
 pip install robin_stocks
 
 #Required Library
