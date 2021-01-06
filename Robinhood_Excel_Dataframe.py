@@ -28,5 +28,29 @@ stock_list.loc['Total Money Invested'] = pd.Series(stock_list['total_stock_price
 data = pd.DataFrame(dct)  
 stock_list.drop(['id','type'], axis=1)
 
-#Converting Pandas dataframe into Excel File
-stock_list.to_excel("StockList.xlsx")
+#Invested Money Dataframe
+invested_money = stock_list.filter(['name','quantity','average_buy_price', 'total_stock_price'], axis=1)
+invested_money.loc['Total_Money_Invested'] = pd.Series(invested_money['total_stock_price'].sum(), index = ['total_stock_price'])
+
+#Current Stock Value Dataframe
+current_value = stock_list.filter(['name','quantity','price', 'equity'], axis=1)
+current_value['equity'] = current_value['equity'].astype(float) #Converting string into **Float**
+current_value.loc['Actual_Value'] = pd.Series(current_value['equity'].sum(), index = ['equity'])
+
+#Calculating Profit and Loss
+Profits=[]
+Profit_Loss = current_value['equity'][:-1].sum() - invested_money['total_stock_price'][:-1].sum()
+Profits.append(Profit_Loss)
+
+#Current Date
+from datetime import date
+dd=date.today()
+print(dd)
+date=[]
+date.append(dd)
+
+#Converting Pandas dataframe into CSV File
+df = pd.DataFrame({'Profit': Profits, 'Date': date})
+df.to_csv('data.csv', mode='a', header=False)
+from google.colab import files
+files.download('data.csv')
