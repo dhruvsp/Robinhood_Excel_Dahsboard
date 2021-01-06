@@ -24,7 +24,9 @@ stock_list['average_buy_price'] = stock_list['average_buy_price'].astype(float)
 stock_list["total_stock_price"] = stock_list["quantity"]*stock_list["average_buy_price"]
 stock_list.loc['Total Money Invested'] = pd.Series(stock_list['total_stock_price'].sum(), index = ['total_stock_price'])
 
-#Converting Pandas dataframe into Excel File
+#Dropping unnecessary column
 data = pd.DataFrame(dct)  
 stock_list.drop(['id','type'], axis=1)
+
+#Converting Pandas dataframe into Excel File
 stock_list.to_excel("StockList.xlsx")
