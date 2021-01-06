@@ -17,7 +17,7 @@ stock_list = pd.DataFrame(my_stocks)
 stock_list = stock_list.T
 stock_list['ticker'] = stock_list.index
 
-#Dropping Unnessesary Colmun and Adding new parameter for calculation
+#DAddine New Row to Calculate total Money Invested
 stock_list = stock_list.reset_index(drop=True)
 stock_list['quantity'] = stock_list['quantity'].astype(float)
 stock_list['average_buy_price'] = stock_list['average_buy_price'].astype(float)
