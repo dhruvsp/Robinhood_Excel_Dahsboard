@@ -38,19 +38,27 @@ current_value['equity'] = current_value['equity'].astype(float) #Converting stri
 current_value.loc['Actual_Value'] = pd.Series(current_value['equity'].sum(), index = ['equity'])
 
 #Calculating Profit and Loss
-Profits=[]
 Profit_Loss = current_value['equity'][:-1].sum() - invested_money['total_stock_price'][:-1].sum()
-Profits.append(Profit_Loss)
 
-#Current Date
+#Importing Current Date
 from datetime import date
 dd=date.today()
 print(dd)
 date=[]
 date.append(dd)
 
+#Adding updated Profit/Loss to CSV file
+new_row = [date, Profit_Loss]
+df.to_csv('data.csv', mode='a', header=False)
+from csv import writer
+def append_list_as_row(file_name, list_of_elem):
+    # Open file in append mode
+    with open(file_name, 'a+', newline='') as write_obj:
+        # Create a writer object from csv module
+        csv_writer = writer(write_obj)
+        # Add contents of list as last row in the csv file
+        csv_writer.writerow(list_of_elem)
 #Converting Pandas dataframe into CSV File
 df = pd.DataFrame({'Profit': Profits, 'Date': date})
 df.to_csv('data.csv', mode='a', header=False)
-from google.colab import files
-files.download('data.csv')
+append_list_as_row('data.csv', new_row)
