@@ -48,8 +48,7 @@ date=[]
 date.append(dd)
 
 #Adding updated Profit/Loss to CSV file
-new_row = [date, Profit_Loss]
-df.to_csv('data.csv', mode='a', header=False)
+new_row = [date, Profit_Loss] 
 from csv import writer
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
@@ -58,7 +57,6 @@ def append_list_as_row(file_name, list_of_elem):
         csv_writer = writer(write_obj)
         # Add contents of list as last row in the csv file
         csv_writer.writerow(list_of_elem)
+        
 #Converting Pandas dataframe into CSV File
-df = pd.DataFrame({'Profit': Profits, 'Date': date})
-df.to_csv('data.csv', mode='a', header=False)
 append_list_as_row('data.csv', new_row)
